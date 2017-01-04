@@ -5,3 +5,10 @@
   border-radius: 5px;
  
 }
+#formvalidation{
+     height: 30px;
+    margin-bottom: 20px;
+    color: red;
+    font-weight: bold
+    
+}
