@@ -1,11 +1,9 @@
 // ******************** Registration page coding ***************************
 
 var arr = [];
-
 function register(){
  
 var email = document.forms['myForm']['email'].value;
-console.log(email);
 var x = email.indexOf('@');
 var y = email.lastIndexOf('.');
 
@@ -56,9 +54,12 @@ var objFiled = {
     userPassword : password
 };
 arr.push(objFiled);
-console.log(arr); 
+
+//******************localStorage ********************************
+
 localStorage.setItem( "Registration" , JSON.stringify(arr));
 sweetAlert("Done...", "Registration completed" ,"success");
+
 
 // *****************empty input field *******************************
 
@@ -73,3 +74,32 @@ document.getElementById('password_confirmation').value = '';
 function cleartxt(){
 document.getElementById('formvalidation').innerHTML = '';   
 }
+
+
+
+
+
+//=====================sign In page coding ===============================
+
+    
+     function siginpage() {
+       var registrationData = localStorage.getItem("Registration");
+       var getRegistration =  JSON.parse(registrationData);
+
+      for(var i=0; i<getRegistration.length;i++){
+               
+        var login_Email = document.getElementById('login-username').value;
+        var login_pass = document.getElementById('login-password').value;
+
+        if(getRegistration[i].userEmailAddress != login_Email || getRegistration[i].userPassword != login_pass){
+            sweetAlert("Oops...", "Something went wrong!", "error");
+            return;
+        }
+        else{
+            window.location.href = ('index.html');
+        }
+    
+}
+        
+     }
+     
